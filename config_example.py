@@ -1,7 +1,7 @@
 # - Configuration file to manage mail configuration
 
 # - Script info
-__version__ = '0.0.1'
+__version__ = '0.0.5'
 __author__ = 'Giovanni'
 
 # - Login and Send params
