@@ -1,8 +1,9 @@
 # pyMail
 
 ## -- TODO:
-- [ ] Change get_http_status server params to use function dynamically
+- [ ] OK - Change get_http_status server params to use function dynamically
 
 ### -- New Features:
-- [ ] Use a cli for graphic shell
-- [ ] User input to choose wich smtp server to use (Google, outlook, etc)
+- [ ] OK - The script will recognize automatically wich smtp server he need to send the email
+- [ ] Set configuration params in a dotenv file
+- [ ] Handle various request to provider exceptions
