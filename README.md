@@ -1,4 +1,9 @@
 # pyMail
+This script will send an email to  a specific addredd (multiple address soon).
+It aims to be an automatic process without a user interface, for ex you can put this on a raspberry pi crontab and it will do the magic.
+
+Stay tuned.
+--
 
 ## -- TODO:
 * [x] Change get_http_status server params to use function dynamically
