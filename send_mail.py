@@ -5,7 +5,9 @@
 import smtplib, ssl
 from environs import Env
 from rich import *
+from rich.console import Console
 
+console = Console()
 
 # - Obtain the HTTP CODE number from smtp server
 def get_http_code(server):
@@ -28,7 +30,7 @@ if __name__ == '__main__':
         env = Env()
         env.read_env(".conf", recurse=False)
     except Exception as e:
-        print("Error reading configuration file")
+        console.log("Error reading configuration file")
 
     # - Getting parameters from .conf file
     MAIL_FROM = env.str("mail_from")
@@ -70,17 +72,18 @@ if __name__ == '__main__':
     # - Trying to send mail with server.sendmail method
     with smtplib.SMTP(SMTP_SERVER, TLSPORT) as server:
         try:
-            print('[yellow]Connecting to the server...[yellow]')
+            console.status("[bold green]Sending email...")
+            console.log('[yellow]Connecting to the server...[yellow]')
             server.starttls()
             server.login(MAIL_FROM, MAIL_PASSWORD)
             server.sendmail(MAIL_FROM, MAIL_TO, message)
-            print('[bold green]Email sent[/bold green]')
+            console.log('[bold green]Email sent[/bold green]')
         except Exception as e:
             e = str(e).replace('(', '')
             err = e.split(',')
             if err[0] == '535':
-                print('[bold red]Unauthorized, user or password not match[/bold red]')
+                console.log('[bold red]Unauthorized, user or password not match[/bold red]')
             else:
-                print('[bold red]Error sending email, pls check your configuration[/bold red]')
+                console.log('[bold red]Error sending email, pls check your configuration[/bold red]')
         finally:
             server.quit()
