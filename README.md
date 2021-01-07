@@ -11,6 +11,7 @@ Stay tuned.
 ### -- New Features:
 * [x] The script will recognize automatically wich smtp server he need to send the email
 * [x] Set configuration params in a dotenv file
+* [ ] Add loading animation  
 * [ ] Handle various request to provider exceptions
 * [ ] Set first argument for subject and second for email body 
   * [ ] If no arguments passed, use default SUBJECT and BODY 
