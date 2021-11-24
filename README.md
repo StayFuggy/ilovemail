@@ -1,21 +1,25 @@
-# pyMail
-This script will send an email to  a specific address (multiple address soon).
-It aims to be an automatic process without a user interface, for ex you can put this on a raspberry pi crontab and it will do the magic.
+# ILOVEMAIL
+Welcome in this new fresh version of pyMail, now labeled **ilovemail!**
 
-Stay tuned.
---
+This script aims to notify users of a possible problem on their systems, it runs without an environment and my milestone is to make it simple as possible.
+It's not completed because i wan't to add some features in near future, it works perfectly for simple purposes.
 
-## -- TODO:
-* [x] Change get_http_status server params to use function dynamically
+## Installation
+As i said above, it's **simple** so you don't need to install some dependencies, just ensure you have at least **python 3.8.10** (Don't tested for below versions for now).
+Download it from release tab and extract the file whatever you want.
+Enjoy.
 
-### -- New Features:
-* [x] The script will recognize automatically wich smtp server he need to send the email
-* [x] Set configuration params in a dotenv file
-* [ ] Add loading animation  
-* [ ] Handle various request to provider exceptions
-* [ ] Set first argument for subject and second for email body 
-  * [ ] If no arguments passed, use default SUBJECT and BODY 
-* [ ] Send email to multiple address  
+## Configuration
+All parameters can be modified in **config_sample.py** file. Once finished, rename the with like this **config.py** and make sure it's positioned on the src root directory.
 
-### -- Optional
-* [ ] Add more smtp server in configuration file
+Execution example:
+`python ilovemail.py`
+or
+`python3 ilovemail.py`
+
+## Usage
+That's your needs! Feel free to use like you want.
+For example, if you have a monitoring system you can put this script if CPU Usage of your server reach 99/100% idle for a few hours.
+
+## Contribute!
+I think it's obvius, but feel free to contribute if you want :)
