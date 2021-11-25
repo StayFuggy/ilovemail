@@ -10,7 +10,7 @@ Download it from release tab and extract the file whatever you want.
 Enjoy.
 
 ## Configuration
-All parameters can be modified in **config_sample.py** file. Once finished, rename the with like this **config.py** and make sure it's positioned on the src root directory.
+All parameters can be modified in **config_sample.py** file. Once finished, rename the file like this **config.py** and make sure it's positioned on the src root directory.
 
 Execution example:
 `python ilovemail.py`
@@ -19,7 +19,7 @@ or
 
 ## Usage
 That's your needs! Feel free to use like you want.
-For example, if you have a monitoring system you can put this script if CPU Usage of your server reach 99/100% idle for a few hours.
+For example, if you have a monitoring system you can exec this script if CPU Usage of your server reach 99/100% idle for a few hours.
 
 ## Contribute!
 I think it's obvius, but feel free to contribute if you want :)
