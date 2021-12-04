@@ -5,11 +5,20 @@ from config import *
 from email.mime.text import MIMEText
 
 
+"""
+Name: ilovemail
+Author: gdjohn4s
+Version: 2.0.1
+"""
+
+# TODO: Using a file.html as a body mail
+# TODO: Set CC, BCC and Files to send 
+
 # Setting default logging properties
 logging.basicConfig(level=logging.DEBUG,
         format='%(asctime)s %(levelname)s %(message)s',
         filename=LOG,
-        filemode='w')
+        filemode='a')
 
 
 def check_smtp(server: str) -> bool:
@@ -40,7 +49,6 @@ def send_mail(
     MAIL_FROM: str,
     MAIL_PWD: str,
     MAIL_TO: str,
-    message: str
     ) -> bool:
     """
     Check if SSL is enabled in config file, connect to the SMTP server
@@ -49,25 +57,28 @@ def send_mail(
     if SSL_ENABLE == True:
         logging.info("Connecting with SSL Enabled")
         try:
-            msg: MIMEText = MIMEText(BODY)
+            msg: MIMEText = MIMEText(BODY_MIME_TEST, 'html')
             msg['Subject'] = SUBJECT
             msg['From'] = MAIL_FROM
-            msg['To'] = ", ".join(MAIL_TO)
+            #msg['To'] = ",".join(MAIL_TO)
+            msg['To'] = MAIL_TO
             with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as mail:
                 mail.starttls()
                 mail.login(MAIL_FROM, MAIL_PWD)
                 mail.sendmail(MAIL_FROM, MAIL_TO, msg.as_string())
                 logging.info("Email Sent!")
+                mail.close()
         except Exception as e:
-            mail.close()
             logging.error(f'Error sending email {e}')
         finally:
             mail.close()
 
 
 def main() -> int:
-    context: SSLContext = get_context()
-    message: str = f'Subject: {SUBJECT}\n\n{BODY}'
+    """
+    Main controller function
+    """
+    context: ssl.SSLContext = get_context()
 
     if check_smtp(SMTP_SERVER):
         logging.info(f'Server {SMTP_SERVER} OK - Sending the Email')
@@ -77,10 +88,9 @@ def main() -> int:
             MAIL_FROM=MAIL_FROM,
             MAIL_PWD=MAIL_PWD,
             MAIL_TO=MAIL_TO,
-            message=message
             )
     else:
-        logging.error("SERVER KO")
+        logging.error("Server {SMTP_SERVER} KO - not responding")
 
 
 if __name__ == "__main__":

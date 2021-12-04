@@ -1,6 +1,6 @@
 # General Configuration
 __author__ = 'gdjohn4s'
-__version__ = '2.0.0'
+__version__ = '2.0.1'
 LOG: str = 'ilovemail.log'
 
 # SMTP Server Auth
@@ -15,4 +15,4 @@ SSL_ENABLE: bool = True
 
 # Mail Options
 SUBJECT: str = "HELLO"
-BODY: str = "My friend"
+BODY: str = "My friend" # -> You can set html here like """ <html> """
