@@ -2,6 +2,7 @@
 venv/**
 config.py
 .conf
+body.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
