@@ -11,7 +11,6 @@ Author: gdjohn4s
 Version: 2.1.0
 """
 
-# TODO: Using a file.html as a body mail
 # TODO: Set CC, BCC and Files to send 
 
 # Setting default logging properties
