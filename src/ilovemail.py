@@ -8,10 +8,10 @@ from email.mime.text import MIMEText
 """
 Name: ilovemail
 Author: gdjohn4s
-Version: 2.1.0
+Version: v2.1.1
 """
 
-# TODO: Set CC, BCC and Files to send 
+# TODO: Set BCC and Files to send 
 
 # Setting default logging properties
 logging.basicConfig(level=logging.DEBUG,
