@@ -11,8 +11,6 @@ Author: gdjohn4s
 Version: v2.1.1
 """
 
-# TODO: Set BCC and Files to send 
-
 # Setting default logging properties
 logging.basicConfig(level=logging.DEBUG,
         format='%(asctime)s %(levelname)s %(message)s',
