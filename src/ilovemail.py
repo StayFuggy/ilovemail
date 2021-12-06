@@ -8,17 +8,46 @@ from email.mime.text import MIMEText
 """
 Name: ilovemail
 Author: gdjohn4s
-Version: 2.0.1
+Version: v2.1.1
 """
 
-# TODO: Using a file.html as a body mail
-# TODO: Set CC, BCC and Files to send 
+# TODO: Set BCC and Files to send 
 
 # Setting default logging properties
 logging.basicConfig(level=logging.DEBUG,
         format='%(asctime)s %(levelname)s %(message)s',
         filename=LOG,
         filemode='a')
+
+
+def check_file(filename: str) -> bool:
+    """
+    Check if body.html exist than return True if exist otherwise false
+    """
+    path: str = os.getcwd()
+    files: list = os.listdir(path)
+
+    if filename in files:
+        return True
+    else:
+        return False
+
+
+def get_html(filename: str) -> str:
+    """
+    Get all body html file content and append to a string
+    """
+    bodyHTML = str()
+
+    if check_file(filename):
+        with open(filename, 'r') as bfile:
+            bfile.seek(0)
+            for line in bfile:
+                bodyHTML += line
+            return bodyHTML
+    else:
+        logging.error(f"Can't open {filename}, probably doesn't exist")
+        exit(1)
 
 
 def check_smtp(server: str) -> bool:
@@ -57,11 +86,11 @@ def send_mail(
     if SSL_ENABLE == True:
         logging.info("Connecting with SSL Enabled")
         try:
-            msg: MIMEText = MIMEText(BODY_MIME_TEST, 'html')
+            msg: MIMEText = MIMEText(get_html(BODY_FILE_HTML), 'html')
             msg['Subject'] = SUBJECT
             msg['From'] = MAIL_FROM
-            #msg['To'] = ",".join(MAIL_TO)
             msg['To'] = MAIL_TO
+            msg['Cc'] = MAIL_CC
             with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as mail:
                 mail.starttls()
                 mail.login(MAIL_FROM, MAIL_PWD)
