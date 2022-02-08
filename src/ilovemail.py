@@ -103,7 +103,7 @@ def send_mail() -> bool:
         logging.warning("SSL Connection disabled, for your security, the script will terimnated!")
         exit(1)
 
-def main() -> int:
+def main():
     """
     Main controller function
     """
